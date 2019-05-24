@@ -4,16 +4,21 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@NoArgsConstructor
+import java.util.List;
+
+@AllArgsConstructor
 @Data
 @Document
 
 public class Label {
 
     @Id
-    private Long id;
+    private String id;
 
     private String name;
 
+    private List<Task> tasks;
+
+    private Priority priority;
 
 }

@@ -24,7 +24,7 @@ public class LabelService {
         return labelRepository.save(label);
     }
 
-    public Mono<Label> getOne(Long id){
+    public Mono<Label> getOne(String id){
         return labelRepository.findById(id);
     }
 

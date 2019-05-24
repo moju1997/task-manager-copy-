@@ -1,21 +1,18 @@
 package com.jazasoft.taskmanager.model;
 
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @AllArgsConstructor
 @Data
 @Document
-public class Task {
-
+public class Priority {
     @Id
-    private String id;
+    private Long id;
 
     private String name;
-
-    private Label label;
-
 
 }

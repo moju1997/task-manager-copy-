@@ -24,7 +24,7 @@ public class TaskRestController {
     }
 
     @GetMapping("/{taskId}")
-    public Mono<ResponseEntity<Task>> getTaskById(@PathVariable(value = "taskId") Long id) {
+    public Mono<ResponseEntity<Task>> getTaskById(@PathVariable(value = "taskId") String id) {
         return taskService.getOne(id)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
@@ -37,7 +37,7 @@ public class TaskRestController {
 
 
     @PutMapping("/{taskId}")
-    public Mono<ResponseEntity<Task>> updateTask(@PathVariable(value = "taskId") Long id, @Valid @RequestBody Task tasks) {
+    public Mono<ResponseEntity<Task>> updateTask(@PathVariable(value = "taskId") String id, @Valid @RequestBody Task tasks) {
         return taskService.getOne(id).flatMap(existingTask -> {
             existingTask.setId(tasks.getId());
             existingTask.setName(tasks.getName());
@@ -48,7 +48,7 @@ public class TaskRestController {
     }
 
     @DeleteMapping("/{taskId}")
-    public Mono<ResponseEntity<Object>> deleteTask(@PathVariable(value = "taskId") Long id) {
+    public Mono<ResponseEntity<Object>> deleteTask(@PathVariable(value = "taskId") String id) {
         return taskService.getOne(id).flatMap(existingTask -> taskService.delete(existingTask)
                 .then(Mono.just(ResponseEntity.noContent().build())))
                 .defaultIfEmpty(ResponseEntity.notFound().build());

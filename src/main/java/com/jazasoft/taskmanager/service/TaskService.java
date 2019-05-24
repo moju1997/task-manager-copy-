@@ -24,11 +24,11 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public Mono<Task> getOne(Long id){
+    public Mono<Task> getOne(String id){
         return taskRepository.findById(id);
     }
 
     public Mono<Void> delete(Task task){
-          return taskRepository.delete(task);
+          return  taskRepository.delete(task);
     }
 }
